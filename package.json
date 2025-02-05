@@ -1,18 +1,19 @@
 {
   "name": "@meta-oh/replacer",
-  "description": "A replacer plugin for rollup, that parses file content searching by comments marked with comptime injection",
-  "version": "0.1.0",
+  "description": "A replacer plugin for esbuild, that parses file content searching by comments marked with comptime injection",
+  "version": "1.0.0",
   "license": "ISC",
   "type": "module",
-  "main": "src/index.js",
+  "main": "./src/index.js",
+  "exports": "./src/index.js",
   "dependencies": {
+    "@babel/generator": "^7.26.5",
     "@babel/parser": "^7.26.5",
     "@babel/traverse": "^7.26.5",
-    "rollup": "^4.31.0"
+    "esbuild": "^0.24.2"
   },
   "devDependencies": {
     "@types/babel__parser": "^7.0.0",
-    "@types/babel__traverse": "^7.20.6",
-    "@types/rollup": "^0.51.4"
+    "@types/babel__traverse": "^7.20.6"
   }
 }

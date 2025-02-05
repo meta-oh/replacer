@@ -1,6 +1,11 @@
 {
   "name": "@meta-oh/replacer",
-  "version": "0.1.0",
-  "license": "MIT",
-  "exports": "./src/index.js"
+  "version": "1.0.0",
+  "license": "ISC",
+  "exports": "./src/index.js",
+  "publish": {
+    "exclude": [
+      "tests"
+    ]
+  }
 }
