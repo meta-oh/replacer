@@ -25,7 +25,7 @@ export function ReplacerPlugin(): Plugin {
 									const [, match] = comment.value.match(/@comptime (\w+)/) ?? [];
 
 									if (match && replacement.has(match)) {
-										const insertedCode = replacement.get(match);
+										const insertedCode = replacement.get(match)!;
 										const insertedAst = parser.parse(insertedCode, { sourceType: 'module' });
 
 										insertedAst.program.body.forEach(node => {
