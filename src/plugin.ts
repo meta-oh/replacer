@@ -2,10 +2,10 @@ import fs from 'fs';
 import parser from '@babel/parser';
 import traverse from '@babel/traverse';
 import generate from '@babel/generator';
-import { Replacement } from './index.js';
+import { replacement } from './index.js';
 import { Plugin } from 'esbuild';
 
-export function ReplacerPlugin() {
+export function ReplacerPlugin(): Plugin {
 	const plugin: Plugin = {
 		name: "ReplacerPlugin",
 		setup(build) {
@@ -24,8 +24,8 @@ export function ReplacerPlugin() {
 								if (comment.value.includes('@comptime')) {
 									const [, match] = comment.value.match(/@comptime (\w+)/) ?? [];
 
-									if (match && Replacement.has(match)) {
-										const insertedCode = Replacement.get(match);
+									if (match && replacement.has(match)) {
+										const insertedCode = replacement.get(match);
 										const insertedAst = parser.parse(insertedCode, { sourceType: 'module' });
 
 										insertedAst.program.body.forEach(node => {
@@ -36,7 +36,7 @@ export function ReplacerPlugin() {
 											}
 										});
 
-										Replacement.delete(match);
+										replacement.delete(match);
 									}
 								}
 							});
