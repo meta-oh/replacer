@@ -1,7 +1,7 @@
 {
   "name": "@meta-oh/replacer",
   "description": "A replacer plugin for esbuild, that parses file content searching by comments marked with comptime injection",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "license": "ISC",
   "type": "module",
   "main": "./src/index.js",

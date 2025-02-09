@@ -1,9 +1,17 @@
 import fs from 'fs';
 import parser from '@babel/parser';
-import traverse from '@babel/traverse';
-import generate from '@babel/generator';
+import _traverse from '@babel/traverse';
+import _generate from '@babel/generator';
 import { replacement } from './index.js';
 import { Plugin } from 'esbuild';
+
+const traverse = typeof _traverse == 'object'
+	? (_traverse as any).default
+	: _traverse;
+
+const generate = typeof _generate == 'object'
+	? (_generate as any).default
+	: _generate;
 
 /**
  * ESBuild plugin that replaces `@comptime` comments in JavaScript/TypeScript files with code 
