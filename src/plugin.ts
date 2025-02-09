@@ -5,6 +5,18 @@ import generate from '@babel/generator';
 import { replacement } from './index.js';
 import { Plugin } from 'esbuild';
 
+/**
+ * ESBuild plugin that replaces `@comptime` comments in JavaScript/TypeScript files with code 
+ * from a predefined `replacement` map.
+ * 
+ * The plugin scans the source code for comments containing `@comptime`, and when a match is found,
+ * it inserts the corresponding code from the `replacement` map into the file. The plugin also ensures 
+ * that import statements are correctly ordered, placing new imports at the appropriate position 
+ * without disrupting existing ones.
+ * 
+ * It uses Babel's AST manipulation tools (`@babel/parser`, `@babel/traverse`, `@babel/generator`) 
+ * for precise code transformation during the build process.
+ */
 export function ReplacerPlugin(): Plugin {
 	const plugin: Plugin = {
 		name: "ReplacerPlugin",
