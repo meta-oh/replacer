@@ -1,4 +1,5 @@
 import { replacement } from './constants';
+import type { PluginObj } from '@babel/core';
 
 /**
  * ESBuild plugin that replaces `@comptime` comments in JavaScript/TypeScript files with code 
@@ -12,7 +13,7 @@ import { replacement } from './constants';
  * It uses Babel's AST manipulation tools (`@babel/parser`, `@babel/traverse`, `@babel/generator`) 
  * for precise code transformation during the build process.
  */
-function ReplacerPlugin() {
+function ReplacerPlugin(): PluginObj {
   return {
     name: 'babel-replacer-plugin',
     visitor: {
