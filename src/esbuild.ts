@@ -2,7 +2,7 @@ import fs from 'fs';
 import parser from '@babel/parser';
 import _traverse from '@babel/traverse';
 import _generate from '@babel/generator';
-import { replacement } from './index.js';
+import { replacement } from './constants';
 import { Plugin } from 'esbuild';
 
 const traverse = typeof _traverse == 'object'
@@ -45,10 +45,9 @@ export function ReplacerPlugin(): Plugin {
 									const [, match] = comment.value.match(/@comptime (\w+)/) ?? [];
 
 									if (match && replacement.has(match)) {
-										const insertedCode = replacement.get(match)!;
-										const insertedAst = parser.parse(insertedCode, { sourceType: 'module' });
+										const statements = replacement.get(match)!;
 
-										insertedAst.program.body.forEach(node => {
+										statements.forEach(node => {
 											if (node.type === 'ImportDeclaration') {
 												importDeclarations.push(node);
 											} else {
@@ -83,3 +82,5 @@ export function ReplacerPlugin(): Plugin {
 	
 	return plugin;
 }
+
+export { replacement, ReplacerPlugin as default }
