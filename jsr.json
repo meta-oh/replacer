@@ -1,8 +1,12 @@
 {
   "name": "@meta-oh/replacer",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "license": "ISC",
-  "exports": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./babel": "./src/babel.ts",
+    "./esbuild": "./src/esbuild.ts"
+  },
   "publish": {
     "exclude": [
       "tests"

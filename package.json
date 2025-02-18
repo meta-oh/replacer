@@ -1,11 +1,14 @@
 {
   "name": "@meta-oh/replacer",
   "description": "A replacer plugin for esbuild, that parses file content searching by comments marked with comptime injection",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "license": "ISC",
   "type": "module",
-  "main": "./src/index.js",
-  "exports": "./src/index.js",
+  "exports": {
+    ".": "./src/index.ts",
+    "./babel": "./src/babel.ts",
+    "./esbuild": "./src/esbuild.ts"
+  },
   "dependencies": {
     "@babel/generator": "^7.26.5",
     "@babel/parser": "^7.26.5",
